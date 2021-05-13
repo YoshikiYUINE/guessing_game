@@ -7,10 +7,20 @@ use std::io;
 fn main() {
     println!("Guess the number!");
 
+    // create random number
     let secret_number: u32 = rand::thread_rng().gen_range(1, 101);
 
-    loop {
+    // when win then then true
+    let mut win_or_lose_flag: bool = false;
+
+    // rev() to reverse the range
+    for count in (0..11).rev() {
+        if 0 == count {
+            break;
+        }
+
         println!("Please input your guess.");
+        println!("{} times remaining", count);
 
         let mut guess = String::new();
 
@@ -34,14 +44,28 @@ fn main() {
         // another enum, but the variants for Ordering are Less, Greater, and Equal.
         // These are the three outcomes that are possible when you compare two values.
         match guess.cmp(&secret_number) {
-            Ordering::Less => println!("Too small!"),
-            Ordering::Greater => println!("Too big!"),
+            Ordering::Less => {
+                println!("Too small!");
+                continue;
+            }
+            Ordering::Greater => {
+                println!("Too big!");
+                continue;
+            }
             Ordering::Equal => {
-                println!("You win! secret number is {}", secret_number);
+                win_or_lose_flag = true;
                 // quit loop
                 break;
             }
         }
     }
-}
 
+    if win_or_lose_flag {
+        println!("You win! secret number is {}", secret_number);
+    } else {
+        println!(
+            "You lose! secret number is {}, please try again.",
+            secret_number
+        );
+    }
+}
