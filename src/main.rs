@@ -28,7 +28,7 @@ fn main() {
             .read_line(&mut guess)
             .expect("Failed to read line");
 
-        let guess_error_message: &str = "please enter number!";
+        let guess_error_message: String = String::from("please enter number!");
         // u32 type is 32 bit unsigned integers
         let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
@@ -60,6 +60,10 @@ fn main() {
         }
     }
 
+    message_of_win_or_lose(secret_number, win_or_lose_flag);
+}
+
+fn message_of_win_or_lose(secret_number: u32, win_or_lose_flag: bool) {
     if win_or_lose_flag {
         println!("You win! secret number is {}", secret_number);
     } else {
