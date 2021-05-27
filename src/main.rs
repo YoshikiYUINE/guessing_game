@@ -8,7 +8,7 @@ fn main() {
     println!("Guess the number!");
 
     // create random number
-    let secret_number: u32 = rand::thread_rng().gen_range(1, 101);
+    let secret_number: u32 = rand::thread_rng().gen_range(1..101);
 
     // when win then then true
     let mut win_or_lose_flag: bool = false;
