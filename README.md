@@ -11,8 +11,6 @@ open terminal and enter following command
 ```shell
 # change directory to this project
 cd [this project directory]
-# build by cargo
-cargo build
 # run by cargo
 cargo run
 ```
